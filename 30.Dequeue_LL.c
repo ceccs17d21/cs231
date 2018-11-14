@@ -11,113 +11,103 @@ struct node
 void main()
 {
     struct node *head,*temp,*tem;
-    int cho,ele=0;
+    int choice,ele;
     head=(struct node*)malloc(sizeof(struct node));
-    head->data=NULL;
+    head->data=0;
     head->llink=NULL;
     head->rlink=NULL;
+    temp=head;
+
     do
     {
-        printf("\nMENU\n1.Insertion(FRONT)\n2.Deletion(FRONT)\n3.Insertion(END)\n4.Deletion(END)\n5.Display\nEnter choice: ");
-        scanf("%d",&cho);
+        printf("\n\nMENU\n1.Insertion(front)\n2.Insertion(end)\n3.Deletion(front)\n4.Deletion(end)\n5.Display\n6.Exit\nEnter choice: ");
+        scanf("%d",&choice);
 
-        if(cho==1)
+        if(choice==1)
         {
-            
-            printf("Enter element: ");
-            scanf("%d",&ele); 
-/*            if(head->rlink==NULL)
+            if(head->rlink==NULL)
             {
                 temp=(struct node*)malloc(sizeof(struct node));
-            temp->data=ele;
-            temp->llink=head;
-            temp->rlink=NULL;
-            head->rlink=temp;
-            }
-*/
+                printf("Enter element: ");
+                scanf("%d",&ele);
+                temp->data=ele;
+                temp->llink=head;
+                temp->rlink=NULL;
+                head->rlink=temp;
 
-            tem=head->rlink;
-            temp=(struct node*)malloc(sizeof(struct node));
-            temp->data=ele;
-            temp->llink=head;
-            temp->rlink=tem;
-            head->rlink=temp;
-            tem->llink=temp;
-            break;
-            
-        }           
-
-        else if(cho==2)
-        {            
-            if(head->rlink==NULL)
-            {
-                printf("\nQueue is EMPTY\n");
             }
             else
             {
-                tem=head->rlink;
-                temp=tem->rlink;
-                head->rlink=temp;
+                temp=(struct node*)malloc(sizeof(struct node));
+                printf("Enter element: ");
+                scanf("%d",&ele);
+                temp->data=ele;
+                temp->rlink=head->rlink;
                 temp->llink=head;
-                printf("\nDELETED %d ",tem->data);
-                free(tem);
+                head->rlink=temp;
+                (temp->rlink)->llink=temp;
             }
-            break;
+        
+
         }
-        else if(cho==3)
+        else if(choice==2)
         {
+            temp=head;
+            while(temp->rlink!=NULL)
+            {
+                temp=temp->rlink;
+            }
+            tem=(struct node*)malloc(sizeof(struct node));
             printf("Enter element: ");
             scanf("%d",&ele);
-            tem=head->rlink;
-            while(tem->rlink!=NULL)
-            {
-                tem=tem->rlink;
-            }
-                    
-            temp=(struct node*)malloc(sizeof(struct node));
-            temp->llink=tem;
-            temp->rlink=NULL;
-            tem->rlink=temp;
-            temp->data=ele;
-            break;
-        }            
-        else if(cho==4)
-        {
-            if(head->rlink==NULL)
-            {
-                printf("\nQueue is EMPTY\n");
-            }
-            else
-            {
-                tem=head->rlink;
-                while(tem->rlink!=NULL)
-                {
-                    tem=tem->rlink;
-                }
-                temp=tem->llink;
-                temp->rlink=NULL;
-                printf("\nDELETED %d ",tem->data);
-                free(tem);
-            }
-            break;
+            tem->data=ele;
+            tem->rlink=NULL;
+            tem->llink=temp;
+            temp->rlink=tem;
         }
-        else if(cho==5)
+        else if(choice==3)
         {
             if(head->rlink==NULL)
             {
-                printf("\nQueue is EMPTY\n");
+                printf("queue is EMPTY");
             }
             else
             {
                 temp=head->rlink;
-                while(temp!=NULL)
+                head->rlink=temp->rlink;
+                free(temp);
+            }
+            
+        }
+        else if(choice==4)
+        {
+            if(head->rlink==NULL)
+            {
+                printf("queue is EMPTY");
+            }
+            else
+            {
+                temp=head;
+                while(temp->rlink!=NULL)
                 {
-                    printf("%d <-",temp->data);
+                    tem=temp;
                     temp=temp->rlink;
                 }
-                printf(" NULL\n");
+                tem->rlink=NULL;
+                free(temp);
+
             }
-            break;
         }
-    }while(cho==1 || cho==2 || cho==3 || cho==4 || cho==5);
+        else if(choice==5)
+        {
+            temp=head->rlink;
+            while(temp!=NULL)
+            {
+                printf("%d <->",temp->data);
+                temp=temp->rlink;
+            }
+            printf("NULL");
+        }
+    }while(choice==1 || choice==2 || choice==3 || choice==4 || choice==5);
+
 }
