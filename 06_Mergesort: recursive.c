@@ -1,3 +1,8 @@
+//Georgi K Joseph
+//S3-D
+//21
+
+//source code...
 #include<stdio.h>
 #include<string.h>
 #include<conio.h>
