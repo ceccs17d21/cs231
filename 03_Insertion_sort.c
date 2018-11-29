@@ -1,3 +1,8 @@
+//Georgi K Joseph
+//S3-D
+//21
+
+//source code...
 #include <stdio.h>
 
 int insertionSort(int array[], int size) {
