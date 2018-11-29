@@ -74,3 +74,4 @@ gcc 41_Binary_Search_Tree_Operation_LL.c;
 
 echo "Ending Script";
 cat ceccs17d21.29.11.18.txt
+exit
