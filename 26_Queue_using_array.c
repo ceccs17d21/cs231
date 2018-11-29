@@ -48,7 +48,7 @@ void main()
                     }
                     else
                     {
-                        printf("DeletedDD %d",queue[front]);
+                        printf("Deleted %d",queue[front]);
                         front+=1; 
                     }
                     break;
